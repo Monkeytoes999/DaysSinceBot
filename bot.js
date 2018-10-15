@@ -37,6 +37,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
 	    
+	    if (changeDay && dayChanger == userID){
+		    bot.sendMessage({
+			    to: channelID,
+			    message: 'Ok, your counter has been set to ' + message + ' days'
+		    });
+		    daysSinceDays[dayChangeWhich] = message;
+		    changeDay = false;
+	    }
+	    
 	if (true){
 		let thisTime = new Date();
 			let thisHour = (thisTime.getHours() - 4);
@@ -58,15 +67,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 		}
 	}
-	    
-	    if (changeDay && dayChanger == userID){
-		    bot.sendMessage({
-			    to: channelID,
-			    message: 'Ok, your counter has been set to ' + message + ' days'
-		    });
-		    daysSinceDays[dayChangeWhich] = message;
-		    changeDay = false;
-	    }
        
         args = args.splice(1);
         switch(cmd) {
