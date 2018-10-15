@@ -113,6 +113,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								message: 'Ok, please enter the number of days you want to set your counter to'
 							});
 							dayChanger = userID;
+							changeDay = true;
 						}
 					}
 			break;
