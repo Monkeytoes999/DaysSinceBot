@@ -77,6 +77,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
 			break;
+		case '':
+			break;
 		case 'addNewDaysSince':
 			daysSince[daysSince.length] = message.substring(17);
 			daysSinceDays[daysSinceDays.length] = 0;
