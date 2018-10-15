@@ -65,6 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    message: 'Ok, your counter has been set to ' + message + ' days'
 		    });
 		    daysSinceDays[dayChangeWhich] = message;
+		    changeDay = false;
 	    }
        
         args = args.splice(1);
