@@ -138,6 +138,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: userID,
 				message: 'Our commands are: \n addNewDaysSince [counter] -- makes a new counter that will increase daily. \n howManySince [counter] -- returns the number of days the counter has \n setDays [counter] -- will prompt you to respond with a number, and will then set the counter to that number of days \n reset [counter] -- will reset the number of days in a counter to 0'
 			});
+			break;
 		default:
 			bot.sendMessage({
 				to: channelID,
