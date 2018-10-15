@@ -33,11 +33,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	capsMess = message.toUpperCase();
 	
-    if (message.substring(0, 1) == '^') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-	    
-	    if (changeDay && dayChanger == userID){
+	if (changeDay && dayChanger == userID){
 		    bot.sendMessage({
 			    to: channelID,
 			    message: 'Ok, your counter has been set to ' + message + ' days'
@@ -67,6 +63,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 		}
 	}
+	
+    if (message.substring(0, 1) == '^') {
+        var args = message.substring(1).split(' ');
+        var cmd = args[0];
        
         args = args.splice(1);
         switch(cmd) {
