@@ -1,9 +1,9 @@
 {
-  "name": "Bot 001",
+  "name": "Days Since Bot",
   "version": "1.0.0",
-  "description": "Ensure order and lack of chaos. This bot will organize people.",
+  "description": "A bot for using 'days since _' commands",
   "main": "bot.js",
-  "author": "Bret",
+  "author": "Graham",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "winston": "^3.1.0"
