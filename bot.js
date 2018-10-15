@@ -4,6 +4,7 @@ var daysSince = [];
 var daysSinceDays = [];
 var prevDay;
 var day;
+var capsMess;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -26,6 +27,8 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
+	
+	capsMess = message.toUpperCase();
 	
     if (message.substring(0, 1) == '^') {
         var args = message.substring(1).split(' ');
@@ -74,7 +77,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				case 'howManySince':
 					let quib = -1;
 					for (var testing = 0; testing < daysSince.length; testing++){
-						if (message.substring(14) == daysSince[testing]){
+						if (capsMess.substring(14) == (daysSince[testing]).toUpperCase()){
 							quib = testing;
 						}
 					}
@@ -93,11 +96,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					break;
 				case 'reset':
 					for (var restTest = 0; restTest < daysSince.length; restTest++){
-						if (message.substring(7) == daysSince[restTest]){
+						if (capsMess.substring(7) == (daysSince[restTest]).toUpperCase()){
 							daysSinceDays[restTest] = 0;
 							bot.sendMessage({
 								to: channelID,
-								message: 'Ok, your counter, ' + daysSince[restTest] + ' has been reset to 0 das'
+								message: 'Ok, your counter, ' + daysSince[restTest] + ' has been reset to 0 days'
 							});
 						}
 					}
