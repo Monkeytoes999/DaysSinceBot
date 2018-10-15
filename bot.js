@@ -67,7 +67,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'addNewDaysSince':
 			daysSince[daysSince.length] = message.substring(17);
 			daysSinceDays[daysSinceDays.length] = 0;
-			bot.sendMessage{(
+			bot.sendMessage({
 				to: channelID,
 				message: 'Ok, your counter, ' + daysSince[daysSince.length - 1] + ', has been created'
 			});
