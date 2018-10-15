@@ -5,6 +5,9 @@ var daysSinceDays = [];
 var prevDay;
 var day;
 var capsMess;
+var dayChanger;
+var changeDay = false;
+var dayChangeWhich;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -48,7 +51,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		
 		prevDay = day;
 		day = thisDay;
-	
 		
 		if (day != prevDay){
 			for (var incrementing = 0; incrementing < daysSinceDays.length; incrementing++){
@@ -56,6 +58,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 		}
 	}
+	    
+	    if (changeDay && dayChanger == userID){
+		    bot.sendMessage({
+			    to: channelID,
+			    message: 'Ok, your counter has been set to ' + message + ' days'
+		    });
+		    daysSinceDays[dayChangeWhich] = message;
+	    }
        
         args = args.splice(1);
         switch(cmd) {
@@ -94,6 +104,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 					break;
+		case 'setDays':
+			for (var setTest = 0; setTest < daysSince.length; setTest++){
+						if (capsMess.substring(9) == (daysSince[setTest]).toUpperCase()){
+							dayChangeWhich = setTest
+							bot.sendMessage({
+								to: channelID,
+								message: 'Ok, please enter the number of days you want to set your counter to'
+							});
+							dayChanger = userID;
+						}
+					}
+			break;
 				case 'reset':
 					for (var restTest = 0; restTest < daysSince.length; restTest++){
 						if (capsMess.substring(7) == (daysSince[restTest]).toUpperCase()){
@@ -105,11 +127,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						}
 					}
 					break;
-			case 'orange':
-				bot.sendMessage({
-					to: channelID,
-					message: '!fire'
-				});
+		case 'help':
+			bot.sendMessage({
+				to: channelID,
+				message: 'Documentation has been sent to the DMs.'
+			});
+			bot.sendMessage({
+				to: userID,
+				message: 'Our commands are: \n addNewDaysSince [counter] -- makes a new counter that will increase daily. \n howManySince [counter] -- returns the number of days the counter has \n setDays [counter] -- will prompt you to respond with a number, and will then set the counter to that number of days \n reset [counter] -- will reset the number of days in a counter to 0
+			});
+		default:
+			bot.sendMessage({
+				to: channelID,
+				message: 'Sorry, I don\'t recognize that command.'
+			});
 			break;
 			
             // Just add any case commands if you want to..
