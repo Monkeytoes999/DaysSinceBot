@@ -1,5 +1,5 @@
 {
-  "name": "Days Since Bot",
+  "name": "DaysSinceBot",
   "version": "1.0.0",
   "description": "A bot for using 'days since _' commands",
   "main": "bot.js",
