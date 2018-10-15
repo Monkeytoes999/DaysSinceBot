@@ -87,13 +87,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					else {
 						bot.sendMessage({
 							to: channelID,
-							message: daysSinceDays[testing] + ' days'
+							message: daysSinceDays[quib] + ' days'
 						});
 					}
 					break;
 				case 'reset':
 					for (var restTest = 0; restTest < daysSince.length; restTest++){
-						if (message.substring(14) == daysSince[restTest]){
+						if (message.substring(7) == daysSince[restTest]){
 							daysSinceDays[restTest] = 0;
 							bot.sendMessage({
 								to: channelID,
