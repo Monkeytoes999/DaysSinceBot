@@ -14,7 +14,7 @@ logger.level = 'debug';
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
-   token: "NzMwODI0MTI4NDYxNzk5NTY2.XwdKvg.otXGn2r67v1wvbGqCHgXPhzgNrY",
+   token: process.env.token,
    autorun: true
 });
 
